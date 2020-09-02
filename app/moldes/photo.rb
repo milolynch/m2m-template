@@ -7,13 +7,15 @@ class Photo
     @location = location
   end
 
-  def get_photographers
-
+  def get_photographer
     #goal is to get all the photographer_titles who have take a photo of this content
-    Album.all.select do |album|
-      album.photo == self
-    end
+    #select is used to get the speciic photo obj and them ve grab all the photographer_objs that
+    #have a
+    pho_t = Album.all.find do |album|
+      album.photo.content == self.content
+    end.photographer.photographer_title
 
+    return "this photo was taken by #{pho_t}\n"
   end
 
 
